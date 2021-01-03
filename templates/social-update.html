@@ -1,0 +1,69 @@
+{% extends "dashboard.html" %}
+{% block body %}
+
+<main id="main">
+ 
+
+  <section id="contact" class="contact">
+      <div class="container">
+
+      <div class="section-title">
+          <h2>Social <i class="bx bx-edit"></i></h2>
+      </div>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                  
+                  {% for category, message in messages %}
+                  <div class="alert alert-{{category}} alert-dismissible fade show" role="alert" data-aos="fade-down">
+                    <strong>{{message}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+  
+                  {% endfor %}
+                  
+              {% endif %}
+              {% endwith %}
+      <div class="row" data-aos="fade-up">
+          <div class="col-lg-15 mt-5 mt-lg-0 d-flex align-items-stretch"> 
+          <form action="/social-update" method="post" role="form" class="php-email-form">
+              <div class="row">
+                  <div class="form-group col-md-6">
+                      <label for="name">Github</label>
+                      <input type="text" name="git_url" class="form-control" id="git_url"  value="{{social.github}}">
+                      <div class="validate"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label for="name">Youtube</label>
+                      <input type="text" class="form-control" name="yt_url" id="yt_url" value="{{social.youtube}}" >
+                      <div class="validate"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label for="name">Twitter</label>
+                      <input type="text" class="form-control" name="twt_url" id="twt_url"  value="{{social.twitter}}">
+                      <div class="validate"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label for="name">Instagram</label>
+                      <input type="text" class="form-control" name="insta_url" id="insta_url"  value="{{social.instagram}}">
+                      <div class="validate"></div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="name">LinkedIn</label>
+                    <input type="text" class="form-control" name="link_url" id="link_url"  value="{{social.linkedin}}">
+                    <div class="validate"></div>
+                </div>
+              </div>                
+              <div class="mb-3">
+              </div>
+              <div class="text-center"><button type="submit">Update</button></div>
+          </form>
+          </div>
+
+      </div>
+
+      </div>
+  </section>
+
+</main>
+
+{% endblock %}

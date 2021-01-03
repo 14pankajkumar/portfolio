@@ -1,0 +1,85 @@
+{% extends "dashboard.html" %}
+{% block body %}
+
+<main id="main">
+
+ <section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Facts   <i class="bx bx-edit"></i></h2>
+      </div>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                  
+                  {% for category, message in messages %}
+                  <div class="alert alert-{{category}} alert-dismissible fade show" role="alert" data-aos="fade-down">
+                    <strong>{{message}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+  
+                  {% endfor %}
+                  
+              {% endif %}
+              {% endwith %}
+      <div class="row" data-aos="fade-up">
+        <div class="col-lg-15 mt-5 mt-lg-0 d-flex align-items-stretch"> 
+          <form action="/facts-update" method="post" role="form" class="php-email-form" >
+              <div class="form-group">
+              <label for="name">Facts Head</label>
+              <textarea class="form-control" name="facthead" rows="6" >{{facthead.fact_head}} </textarea>
+              <div class="validate"></div>
+              </div>
+              <div class="mb-3">
+              </div>
+              <div class="text-center"><button type="submit">Update</button></div>
+          </form>
+          </div>
+          <div class="mb-3">  
+        </div>
+
+        <div class="section-title">
+          <h2>Edit Facts <i class="bx bx-edit"></i></h2>
+            <div class="col-lg-15" data-aos="fade-up" >
+              <a href="/facts-edit/0"><button class="btn btn-primary">Add Facts</button></a>
+                <hr>
+                <div class="table-responsive">
+                  <table class="table table-hover" class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Sno</th>
+                        <th scope="col">Facts</th>
+                        <th scope="col">Title</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                      </tr>
+                      </tr>
+                    </thead>
+                    <tbody>
+    
+                        {% for fact in facts %}
+                      <tr>
+                        <th scope="row">{{fact.sno}}</th>
+                        <td>{{fact.fact}}</td>
+                        <td>{{fact.title}}</td>
+                        <td><a href="/facts-edit/{{fact.sno}}"><button class="btn btn-primary">Edit</button></a></td>
+                        <td><a href="/facts-delete/{{fact.sno}}"><button class="btn btn-primary">Delete</button></a></td>
+                      </tr>
+                      
+                      {% endfor %}
+    
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </section>
+
+</main>
+
+{% endblock %}

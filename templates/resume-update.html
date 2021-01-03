@@ -1,0 +1,136 @@
+{% extends "dashboard.html" %}
+{% block body %}
+
+
+<main id="main">
+
+
+  <section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Resume<i class="bx bx-edit"></i></h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                  
+                  {% for category, message in messages %}
+                  <div class="alert alert-{{category}} alert-dismissible fade show" role="alert" data-aos="fade-down">
+                    <strong>{{message}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+  
+                  {% endfor %}
+                  
+              {% endif %}
+              {% endwith %}
+
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-15 mt-5 mt-lg-0 d-flex align-items-stretch"> 
+          <form action="/resume-update" method="post" role="form" class="php-email-form">
+            <div class="form-group">
+              <label for="name">Resume Head</label>
+              <textarea class="form-control" name="resume_head" rows="5" data-rule="required">{{resume.resume_head}} </textarea>
+              <div class="validate"></div>
+            </div>
+            <div class="form-group">
+              <label for="name">Summary</label>
+              <textarea class="form-control" name="summary" rows="5" data-rule="required">{{resumesummary.summary}} </textarea>
+              <div class="validate"></div>
+            </div>
+            <div class="mb-3">
+            </div>
+            <div class="text-center"><button type="submit" class="btn btn-primary">Update</button></div>
+          </form>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="section-title">
+        <h2>Edit Education <i class="bx bx-edit"></i></h2>
+        
+          <div class="col-lg-15" data-aos="fade-up">
+            <a href="/edu-edit/0"><button class="btn btn-primary">Add Education</button></a>
+              <hr>
+            
+              <div class="table-responsive">
+                <table class="table table-hover" class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Sno</th>
+                      <th scope="col">Course</th>
+                      <th scope="col">Year</th>
+                      <th scope="col">Institute</th>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+  
+                      {% for edu in education %}
+                    <tr>
+                      <th scope="row">{{edu.sno}}</th>
+                      <td>{{edu.course}}</td>
+                      <td>{{edu.year}}</td>
+                      <td>{{edu.institute}}</td>
+                      <td><a href="/edu-edit/{{edu.sno}}"><button class="btn btn-primary">Edit</button></a></td>
+                      <td><a href="/edu-delete/{{edu.sno}}"><button class="btn btn-primary">Delete</button></a></td>
+                    </tr>
+                    
+                    {% endfor %}
+  
+                  </tbody>
+                </table>
+              </div>
+            
+          </div>
+        
+      </div>
+
+      <div class="section-title">
+        <h2>Edit Professional Experience <i class="bx bx-edit"></i></h2>
+          <div class="col-lg-15" data-aos="fade-up">
+            <a href="/pro-edit/0"><button class="btn btn-primary">Add Professional Experience</button></a>
+              <hr>
+
+              <div class="table-responsive">
+                <table class="table table-hover" class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Sno</th>
+                      <th scope="col">Course</th>
+                      <th scope="col">Year</th>
+                      <th scope="col">Company</th>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+  
+                      {% for pro in proex %}
+                    <tr>
+                      <th scope="row">{{pro.sno}}</th>
+                      <td>{{pro.course}}</td>
+                      <td>{{pro.year}}</td>
+                      <td>{{pro.company}}</td>
+                      <td><a href="/pro-edit/{{pro.sno}}"><button class="btn btn-primary">Edit</button></a></td>
+                      <td><a href="/pro-delete/{{pro.sno}}"><button class="btn btn-primary">Delete</button></a></td>
+                    </tr>
+                    
+                    {% endfor %}
+  
+                  </tbody>
+                </table>
+              </div>
+          </div>
+      </div>
+      
+
+    </div>
+  </section>
+
+</main><!-- End #main -->
+
+
+  {% endblock %}

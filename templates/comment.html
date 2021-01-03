@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container">
+            
+            <div class="section-title">
+                <h2>Comment</h2>
+                <p>Your comment will be visible in Testimonials section. </p>
+                <p>(Email will not be visible) </p>
+              </div>
+
+              {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                  
+                  {% for category, message in messages %}
+                  <div class="alert alert-{{category}} alert-dismissible fade show" role="alert" data-aos="fade-down">
+                    <strong>{{message}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+  
+                  {% endfor %}
+                  
+              {% endif %}
+              {% endwith %}
+
+              <div class="col-lg-15 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up"> 
+                <form action="/testimonials-uploader" method="POST" class="php-email-form" enctype="multipart/form-data">
+                  <div class="form-group"><label for="text">Upload Picture</label></div>
+                    <input type="file" id="myFile" name="filename" required>
+                    <button type="submit">Submit</button>
+                </form>
+              </div>
+              <div class="mb-3">
+            </div>
+
+            <div class="row" data-aos="fade-up">
+              <div class="col-lg-15 mt-5 mt-lg-0 d-flex align-items-stretch"> 
+                <form action="/comment" method="post" role="form" class="php-email-form">
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <label for="name">Name</label>
+                      <input type="text" name="tname" class="form-control" id="tname" data-rule="minlen:4" required/>
+                      <div class="validate"></div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="name">Email</label>
+                      <input type="email" class="form-control" name="temail" id="temail"  required />
+                      <div class="validate"></div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="name">Occupation</label>
+                      <input type="text" class="form-control" name="occupation" id="occupation" required />
+                      <div class="validate"></div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="name">Picture</label>
+                      <input type="text" class="form-control" name="picture" id="picture"  />
+                      <div class="validate"></div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Comment</label>
+                    <textarea class="form-control" name="comment" rows="5" data-rule="comment" required ></textarea>
+                    <div class="validate"></div>
+                  </div>
+                  <div class="mb-3">
+                  </div>
+                  <div class="text-center"><button type="submit">Submit</button></div>
+                </form>
+            </div>
+           
+        </div>
+    </section>
+</main>
+
+
+{% endblock %}

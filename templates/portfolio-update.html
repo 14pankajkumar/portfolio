@@ -1,0 +1,166 @@
+{% extends "dashboard.html" %}
+{% block body %}
+
+<main id="main">
+ 
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+            <h2>Edit Portfolio <i class="bx bx-edit"></i></h2>
+        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                  
+                  {% for category, message in messages %}
+                  <div class="alert alert-{{category}} alert-dismissible fade show" role="alert" data-aos="fade-down">
+                    <strong>{{message}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+  
+                  {% endfor %}
+                  
+              {% endif %}
+              {% endwith %}
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-15 mt-5 mt-lg-0 d-flex align-items-stretch"> 
+            <form action="/portfolio-update" method="post" role="form" class="php-email-form" >
+                <div class="form-group">
+                <label for="name">Portfolio Head</label>
+                <textarea class="form-control" name="portfolio_head" rows="6" >{{portfolio.portfolio_head}}</textarea>
+                <div class="validate"></div>
+                </div>
+                <div class="mb-3">
+                </div>
+                <div class="text-center"><button type="submit">Update</button></div>
+            </form>
+            </div>
+            <div class="mb-3">  
+          </div>
+        </div>
+
+        <div class="section-title">
+          <h2>Edit Apps <i class="bx bx-edit"></i></h2>
+            <div class="col-lg-15" data-aos="fade-up" >
+              <a href="/apps-edit/0"><button class="btn btn-primary">Add Apps</button></a>
+                <hr>
+                <div class="table-responsive">
+                  <table class="table table-hover" class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Sno</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Date</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+    
+                        {% for app in apps %}
+                      <tr>
+                        <th scope="row">{{app.sno}}</th>
+                        <td>{{app.app_title}}</td>
+                        <td>{{app.date}}</td>
+                        <td><a href="/apps-edit/{{app.sno}}"><button class="btn btn-primary">Edit</button></a></td>
+                        <td><a href="/apps-delete/{{app.sno}}"><button class="btn btn-primary">Delete</button></a></td>
+                      </tr>
+                      
+                      {% endfor %}
+    
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+  
+        <div class="section-title">
+          <h2>Edit Card <i class="bx bx-edit"></i></h2>
+            <div class="col-lg-15" data-aos="fade-up">
+              <a href="/card-edit/0"><button class="btn btn-primary">Add Card</button></a>
+                <hr>
+  
+                <div class="table-responsive">
+                  <table class="table table-hover" class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Sno</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Date</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+    
+                        {% for cards in card %}
+                      <tr>
+                        <th scope="row">{{cards.sno}}</th>
+                        <td>{{cards.card_title}}</td>
+                        <td>{{cards.date}}</td>
+                        <td><a href="/card-edit/{{cards.sno}}"><button class="btn btn-primary">Edit</button></a></td>
+                        <td><a href="/card-delete/{{cards.sno}}"><button class="btn btn-primary">Delete</button></a></td>
+                      </tr>
+                      
+                      {% endfor %}
+    
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">
+          <h2>Edit Web<i class="bx bx-edit"></i></h2>
+            <div class="col-lg-15" data-aos="fade-up">
+              <a href="/web-edit/0"><button class="btn btn-primary">Add Web</button></a>
+                <hr>
+  
+                <div class="table-responsive">
+                  <table class="table table-hover" class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Sno</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Date</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+    
+                        {% for webs in web %}
+                      <tr>
+                        <th scope="row">{{webs.sno}}</th>
+                        <td>{{webs.web_title}}</td>
+                        <td>{{webs.date}}</td>
+                        <td><a href="/web-edit/{{webs.sno}}"><button class="btn btn-primary">Edit</button></a></td>
+                        <td><a href="/web-delete/{{webs.sno}}"><button class="btn btn-primary">Delete</button></a></td>
+                      </tr>
+                      
+                      {% endfor %}
+    
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">  
+        </div>
+        <div class="col-lg-15 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up"> 
+          <form action="/port-uploader" method="POST" class="php-email-form" enctype="multipart/form-data">
+            <div class="form-group"><label for="text">Upload Picture</label></div>
+            <input type="file" id="myFile" name="filename" required>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <div class="mb-3">
+      </div>
+        
+      </div>
+    </section><!-- End Contact Section -->
+    
+</main>
+
+  {% endblock %}

@@ -1,0 +1,17 @@
+{
+    "params":
+    {
+        "local_server": "True",
+
+        "local_uri": "mysql://root:@localhost/myportfolio",
+        "prod_uri":"mysql://user:password@localhost/database",
+        
+        "gmail_user": "pank4139@gmail.com",
+        "gmail_password": "Pankaj14@#",
+        "upload_location": "C:\\Users\\panka\\VS Projects\\Python projects\\Portfolio_site\\static\\assets\\img",
+        "port_upload_location": "C:\\Users\\panka\\VS Projects\\Python projects\\Portfolio_site\\static\\assets\\img\\portfolio",
+        "testi_upload_location": "C:\\Users\\panka\\VS Projects\\Python projects\\Portfolio_site\\static\\assets\\img\\testimonials"
+
+    }
+
+}
