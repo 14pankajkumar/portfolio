@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from werkzeug.utils import secure_filename
 from datetime import datetime
+import pymysql
 import time
 import json
 import os
