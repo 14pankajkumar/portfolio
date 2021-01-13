@@ -8,9 +8,9 @@
         
         "gmail_user": "example@emai.com",
         "gmail_password": "Password",
-        "upload_location": "C:\\Users\\panka\\VS Projects\\Python projects\\Portfolio_site\\static\\assets\\img",
-        "port_upload_location": "C:\\Users\\panka\\VS Projects\\Python projects\\Portfolio_site\\static\\assets\\img\\portfolio",
-        "testi_upload_location": "C:\\Users\\panka\\VS Projects\\Python projects\\Portfolio_site\\static\\assets\\img\\testimonials"
+        "upload_location": "",
+        "port_upload_location": "",
+        "testi_upload_location": ""
 
     }
 
